@@ -21,8 +21,11 @@
     "@angular/platform-browser": "^7.2.0",
     "@angular/platform-browser-dynamic": "^7.2.0",
     "@angular/router": "^7.2.0",
+    "@ng-bootstrap/ng-bootstrap": "^9.0.0",
+    "bootstrap": "^4.5.3",
     "core-js": "^2.6.2",
     "rxjs": "^6.1.0",
+    "rxjs-compat": "^6.3.3",
     "tslib": "^1.9.0",
     "zone.js": "^0.8.27"
   },

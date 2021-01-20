@@ -1,0 +1,40 @@
+<div class="d-flex justify-content-center" data-loader>
+  <div class="spinner-border" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
+<div class="container text-center" *ngIf="entireAppObject">
+  <ul class="list-unstyled pb-4">
+    <li *ngFor="let appObject of entireAppObject; let i = index" class="border px-3 py-3 my-3">
+      <img class="my-3 img-fluid" src="{{appObject.display_url}}" alt="{{appObject.author}}">
+      <h2 class="text-wrap">{{appObject.author}}</h2>
+      <p>{{appObject.width}}x{{appObject.height}}</p>
+      <button type="button" class="btn btn-primary" data-toggle="modal" [attr.data-target]="'#exampleModal'+ i"
+              *ngIf="entireAppObject.showModal">
+        Download image
+      </button>
+      <div class="modal fade" [attr.id]="'exampleModal'+ i" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Confirm</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <a class="btn btn-primary" target="_blank" role="button" href="{{appObject.download_url}}">Download</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="btn btn-primary" role="button" href="{{appObject.download_url}}" target="_blank"
+         *ngIf="!entireAppObject.showModal">Download image</a>
+    </li>
+  </ul>
+  <div class="form-group form-check fixed-bottom bg-white mb-0 py-3">
+    <input type="checkbox" class="form-check-input" id="disableConfirmation" (change)="disableConfirmation($event)">
+    <label class="form-check-label" for="disableConfirmation">Disable confirmation</label>
+  </div>
+</div>
